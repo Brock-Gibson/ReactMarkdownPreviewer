@@ -1,25 +1,46 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Markdown } from "react-showdown";
+import "./App.css";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      markdownText: "# Welcome to Markdown Previewer"
+    };
+  }
+
+  componentDidUpdate() {
+    console.log(this.state.markdownText);
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="container">
+        <div className="row">
+          <h1 className="col-sm text-white">Markdown Previewer</h1>
+          <hr />
+        </div>
+        <div className="row">
+          <div className="col-sm">
+            <textarea
+              resize="false"
+              cols="30"
+              rows="15"
+              className="preview"
+              onChange={event =>
+                this.setState({ markdownText: event.target.value })
+              }
+            >
+              # Welcome to Markdown Previewer
+            </textarea>
+          </div>
+          <div className="col-sm">
+            <div className="result">
+              <Markdown markup={this.state.markdownText} />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
