@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <div className="container">
         <div className="row">
-          <h1 className="col-sm text-white">Markdown Previewer</h1>
+          <h1 className="col-sm text-black">Markdown Previewer</h1>
           <hr />
         </div>
         <div className="row">
